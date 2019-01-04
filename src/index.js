@@ -14,8 +14,8 @@ class App extends React.Component {
 
     }
 
-    render() {
-
+    // helper method to remove conditionals from render()
+    renderContent() {
         if (this.state.errorMessage && !this.state.lat) {
             return <div>Error: {this.state.errorMessage}</div>
         }
@@ -24,6 +24,12 @@ class App extends React.Component {
         }
 
         return <Loader message='Please accept location request' />
+    }
+
+    render() {
+        return (
+            <div className='content-container'> {this.renderContent()}</div>
+        )
 
     }
 }
